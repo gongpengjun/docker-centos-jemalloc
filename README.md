@@ -72,7 +72,7 @@ Total: reserved=2022647KB +201KB, committed=722655KB +201KB
 定时查看nmt结果
 
 ```shell
-[root@560ed375bbdc diagnostic]# ./log-nmt-repeat.sh &
+[root@560ed375bbdc diagnostic]# ./log-nmt-reports.sh &
 [1] 9933
 [root@8a159c9c4261 diagnostic]# ./format-nmt-report.sh
 File Name                     Java Heap  Class  Thread  Code   GC      Compiler  Internal  Symbol  Native Memory Tracking  Arena Chunk  Unknown  Total
