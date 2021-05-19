@@ -3,16 +3,16 @@
 
 ## 1. Usage
 
-## 1.1 Build Docker Image
+## 1.1 Download JDK 8
+
+Goto https://www.oracle.com/java/technologies/javase-downloads.html
+Download `jdk-8u291-linux-x64.tar.gz` and move alongside of beside by Dockerfile.
+
+
+## 1.2 Build Docker Image
 
 ```shell
 $ docker build . -t centos-jdk8-jemalloc:8u291
-```
-
-## 1.2 Run Docker Container
-
-```shell
-$ docker run -ti --rm centos-jdk8-jemalloc:8u291
 ```
 
 ## 1.3 Debug sample
