@@ -90,21 +90,21 @@ Time,Java_Heap,Class,Thread,Code,GC,Compiler,Internal,Symbol,Native_Memory_Track
 [root@0bf8b75b4770 diagnostic]# cat jeprof-reports.sh
 #!/bin/bash
 
-jeprof --svg /tmp/jeprof.* > /tmp/jprof/jeprof-report.svg 2>/dev/null
-jeprof --text /tmp/jeprof.* > /tmp/jprof/jeprof-report.txt 2>/dev/null
+jeprof --svg /tmp/jeprof.* > /tmp/jeprof/jeprof-report.svg 2>/dev/null
+jeprof --text /tmp/jeprof.* > /tmp/jeprof/jeprof-report.txt 2>/dev/null
 
 [root@0bf8b75b4770 diagnostic]# ./jeprof-reports.sh
-[root@0bf8b75b4770 diagnostic]# ls /tmp/jprof/
+[root@0bf8b75b4770 diagnostic]# ls /tmp/jeprof/
 jeprof-report.svg  jeprof-report.txt
 ```
 
 导出jeprof结果
 
 ```shell
-docker-centos-jemalloc$ docker cp 0bf8b75b4770:/tmp/jprof ./
-docker-centos-jemalloc$ ls jprof/
+docker-centos-jemalloc$ docker cp 0bf8b75b4770:/tmp/jeprof ./
+docker-centos-jemalloc$ ls jeprof/
 jeprof-report.svg	jeprof-report.txt
-docker-centos-jemalloc$ open -a /Applications/Google\ Chrome.app jprof/jeprof-report.svg
+docker-centos-jemalloc$ open -a /Applications/Google\ Chrome.app jeprof/jeprof-report.svg
 ```
 
 
