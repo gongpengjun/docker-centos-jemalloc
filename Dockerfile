@@ -14,10 +14,15 @@ RUN yum upgrade -y; yum group install -y "Development Tools"; \
     yum install -y wget tcl zlib-devel git docbook-xsl libxslt graphviz python3 tree which; \
     yum clean all
 
-RUN mkdir -p /opt && cd /opt && git clone --depth 1 --branch stable-4 https://github.com/jemalloc/jemalloc.git \
+RUN mkdir -p /opt && cd /opt  \
     && mkdir /tmp/jeprof && mkdir /tmp/nmt && mkdir /tmp/pmap \
     && mkdir /diagnostic
 
+### make 'jemalloc.tar.gz' from jemalloc github repo
+# git clone --depth 1 --branch stable-4 https://github.com/jemalloc/jemalloc.git
+# cd jemalloc; git archive --format tar.gz --output ../jemalloc.tar.gz HEAD; cd -
+###
+ADD jemalloc.tar.gz /opt/jemalloc
 RUN cd /opt/jemalloc && ./autogen.sh --enable-prof
 RUN cd /opt/jemalloc && make dist
 RUN cd /opt/jemalloc && make
