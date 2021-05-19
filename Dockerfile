@@ -11,7 +11,7 @@ ENV JAVA_HOME=/opt/jdk1.8.0_291
 ENV PATH=${JAVA_HOME}/bin:${PATH}
 
 RUN yum upgrade -y; yum group install -y "Development Tools"; \
-    yum install -y wget tcl which zlib-devel git docbook-xsl libxslt graphviz python3 tree which; \
+    yum install -y wget tcl zlib-devel git docbook-xsl libxslt graphviz python3 tree which; \
     yum clean all
 
 RUN mkdir -p /opt && cd /opt && git clone --depth 1 --branch stable-4 https://github.com/jemalloc/jemalloc.git \
