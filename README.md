@@ -111,8 +111,6 @@ docker-centos-jemalloc$ open -a /Applications/Google\ Chrome.app jprof/jeprof-re
 
 ## 2. jemalloc usage - jeprof
 
-- [jemalloc](http://jemalloc.net/)
-
 ### 2.1 Configure ENV
 
 Configure Java to use jemalloc using **LD_PRELOAD**.
@@ -144,4 +142,15 @@ $ jeprof --svg /tmp/jeprof.* > jeprof-report.svg
 $ jeprof --text /tmp/jeprof.* > jeprof.txt
 ```
 
-## 
+## 3. Reference
+
+jcmd：https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr006.html
+
+NMT：https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr007.html
+
+jemalloc： http://jemalloc.net/
+
+Centos Docker Offical Image：https://hub.docker.com/_/centos
+
+
+
