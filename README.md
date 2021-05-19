@@ -56,29 +56,32 @@ java -XX:NativeMemoryTracking=detail -XX:+UseG1GC -XX:MetaspaceSize=100m -XX:Max
 
 ### 1.3.4 Run NMT Check
 
+#### 1.3.4.1 定时查看NMT摘要
+
 ```shell
-[root@0bf8b75b4770 diagnostic]# ./nmt-baseline.sh
-39:
-Baseline succeeded
-[root@0bf8b75b4770 diagnostic]# ./nmt-diff.sh
-39:
-
-Native Memory Tracking:
-
-Total: reserved=2022647KB +201KB, committed=722655KB +201KB
-...
+[root@45845145f074 diagnostic]# ./run-interner.sh
+[root@45845145f074 diagnostic]# ./log-nmt-summary.sh
+Time,Java_Heap,Class,Thread,Code,GC,Compiler,Internal,Symbol,Native_Memory_Tracking,Arena_Chunk,Unknown
+06:11:07,524288KB,5003KB,36012KB,2590KB,72811KB,138KB,1985KB,63868KB,413KB,195KB,0KB
+06:11:18,524288KB,5003KB,36012KB,2590KB,72942KB,138KB,2077KB,73388KB,445KB,195KB,0KB
+06:11:28,524288KB,5003KB,36012KB,2590KB,72957KB,138KB,2120KB,73388KB,450KB,195KB,0KB
 ```
 
-定时查看nmt结果
+#### 1.3.4.2 定时查看NMT摘要增量
 
 ```shell
-[root@560ed375bbdc diagnostic]# ./log-nmt-reports.sh &
-[1] 9933
-[root@8a159c9c4261 diagnostic]# ./format-nmt-report.sh
-File Name                     Java Heap  Class  Thread  Code   GC      Compiler  Internal  Symbol  Native Memory Tracking  Arena Chunk  Unknown  Total
-reports/nmt_202105181425.out  524,288    5,003  36,012  2,590  72,959  138       2,119     73,620  450                     195          0        717,374
-reports/nmt_202105181426.out  524,288    5,007  36,012  2,592  73,354  138       2,136     77,316  467                     196          0        721,505
-reports/nmt_202105181427.out  524,288    5,007  36,012  2,592  73,487  138       2,136     77,316  468                     196          0        721,640
+[root@45845145f074 diagnostic]# ./run-interner.sh
+[root@45845145f074 diagnostic]# ./log-nmt-diff.sh
+2021-05-19 04:02:18
+73:
+Baseline succeeded
+Time,Java_Heap,Class,Thread,Code,GC,Compiler,Internal,Symbol,Native_Memory_Tracking,Arena_Chunk,Unknown
+04:02:19,524288KB,5003KB,36012KB,2591KB,72754KB,138KB,1883KB,59956KB+4296KB,419KB+32KB,2059KB,0KB
+04:02:24,524288KB,5003KB,36012KB,2591KB,72895KB+141KB,138KB,2096KB+213KB,73452KB+17792KB,471KB+84KB,196KB-1863KB,0KB
+04:02:29,524288KB,5003KB,36012KB,2591KB,72897KB+143KB,138KB,2100KB+217KB,73452KB+17792KB,472KB+85KB,196KB-1863KB,0KB
+04:02:34,524288KB,5003KB,36012KB,2591KB,72955KB+201KB,138KB,2102KB+219KB,73452KB+17792KB,473KB+86KB,196KB-1863KB,0KB
+04:02:39,524288KB,5003KB,36012KB,2591KB,72961KB+207KB,138KB,2120KB+237KB,73452KB+17792KB,475KB+88KB,196KB-1863KB,0KB
+04:02:45,524288KB,5003KB,36012KB,2591KB,72961KB+207KB,138KB,2120KB+237KB,73452KB+17792KB,475KB+88KB,196KB-1863KB,0KB
 ```
 
 ### 1.3.5 Run jeprof
